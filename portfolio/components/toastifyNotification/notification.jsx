@@ -3,9 +3,15 @@ import "react-toastify/dist/ReactToastify.css";
 
 function Notification() {
   return (
-    <div>
-      <ToastContainer position="bottom-right" />
-    </div>
+    <ToastContainer
+      position="bottom-right"
+      autoClose={5000}
+      hideProgressBar={false}
+      closeOnClick
+      pauseOnHover
+      draggable
+      theme="dark"
+    />
   );
 }
 export default Notification;

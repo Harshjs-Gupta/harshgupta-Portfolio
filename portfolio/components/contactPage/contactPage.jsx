@@ -1,93 +1,58 @@
 "use client";
-import { useState } from "react";
+import { useRef } from "react";
 import { toast } from "react-toastify";
-import emailjs from "emailjs-com";
 import Image from "next/image";
+import emailjs from "@emailjs/browser";
 import call from "@/assets/Images/Icons/call.png";
 import mail from "@/assets/Images/Icons/mail.png";
 import "@/style/home.css";
 
 function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    number: "",
-    email: "",
-    message: "",
-    service: "",
-  });
+  const form = useRef();
 
-  // Initialize EmailJS with your public key once
-  if (typeof window !== "undefined") {
-    emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_USER_ID);
-  }
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleServiceChange = (e) => {
-    setFormData({
-      ...formData,
-      service: e.target.value,
-    });
-  };
-
-  const handleSubmit = (e) => {
+  const sendEmail = (e) => {
     e.preventDefault();
 
-    // Main email sending
+    emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
+
+    const autoReplyData = {
+      user_name: form.current.name.value, // The user's name
+      to_email: form.current.email.value, // The user's email
+    };
+
+    // Send original email
     emailjs
-      .send(
+      .sendForm(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-        formData,
-        process.env.NEXT_PUBLIC_EMAILJS_USER_ID
+        form.current,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
       )
       .then(
-        (response) => {
-          console.log("SUCCESS!", response.status, response.text);
-          toast.success("Message sent successfully!");
-
-          // Auto-reply email data
-          const autoReplyData = {
-            to_email: formData.email,
-            user_name: formData.name,
-          };
-
-          // Sending the auto-reply email
+        () => {
+          console.log("Original message sent successfully!");
+          // Send auto-reply email
           emailjs
             .send(
               process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
               process.env.NEXT_PUBLIC_AUTO_EMAILJS_TEMPLATE_ID,
               autoReplyData,
-              process.env.NEXT_PUBLIC_EMAILJS_USER_ID
+              process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
             )
-            .then(
-              (autoReplyResponse) => {
-                console.log(
-                  "Auto-reply sent successfully!",
-                  autoReplyResponse.status,
-                  autoReplyResponse.text
-                );
-                setFormData({
-                  name: "",
-                  number: "",
-                  email: "",
-                  message: "",
-                  service: "",
-                }); // Clear form
-              },
-              (error) => {
-                console.error("Error in sending auto-reply", error);
-              }
-            );
+            .then(() => {
+              console.log("Auto-reply sent successfully!");
+              toast.success("Message and auto-reply sent successfully");
+            })
+            .catch((error) => {
+              console.error("Auto-reply failed...", error.text);
+              toast.error("Message sent, but auto-reply failed.");
+            });
+
+          form.current.reset();
         },
-        (err) => {
-          console.log("FAILED...", err);
-          toast.error("Failed to send message. Please try again later.");
+        (error) => {
+          console.error("Original message failed...", error.text);
+          toast.error("Failed to send the message.");
         }
       );
   };
@@ -95,42 +60,26 @@ function ContactPage() {
   return (
     <section className="section" id="Contact-page">
       <div className="container p-20">
-        <form className="contact-container" onSubmit={handleSubmit}>
+        <form ref={form} className="contact-container" onSubmit={sendEmail}>
           <span>Let&apos;s work together</span>
           <div className="flex flex-col gap-3">
-            <input
-              type="text"
-              placeholder="Your name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
+            <input type="text" placeholder="Your name" name="name" required />
             <input
               type="number"
               placeholder="Your Mob. Number"
               name="number"
-              value={formData.number}
-              onChange={handleChange}
               required
             />
             <input
               type="email"
               placeholder="Your Email"
               name="email"
-              value={formData.email}
-              onChange={handleChange}
               required
             />
           </div>
           <div className="messageBox">
-            <select
-              value={formData.service}
-              name="service"
-              onChange={handleServiceChange}
-              required
-            >
-              <option value="Select a service">Select a service</option>
+            <select name="service" required>
+              <option value="">Select a service</option>
               <option value="Web Development">Web Development</option>
               <option value="UI/UX Designer">UI/UX Designer</option>
               <option value="Frontend Development">Frontend Development</option>
@@ -140,8 +89,6 @@ function ContactPage() {
               placeholder="Your Message"
               className="message"
               name="message"
-              value={formData.message}
-              onChange={handleChange}
               required
             />
           </div>

@@ -88,7 +88,12 @@ function ProjectPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Image src={project.image} height={400} width={500} />
+                  <Image
+                    src={project.image}
+                    alt={project.altText}
+                    height={400}
+                    width={500}
+                  />
                 </a>
               </div>
             )
