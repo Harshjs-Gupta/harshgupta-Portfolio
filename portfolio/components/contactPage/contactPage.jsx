@@ -5,6 +5,7 @@ import emailjs from "emailjs-com";
 import Image from "next/image";
 import call from "@/assets/Images/Icons/call.png";
 import mail from "@/assets/Images/Icons/mail.png";
+import "@/style/home.css";
 
 function ContactPage() {
   const [formData, setFormData] = useState({

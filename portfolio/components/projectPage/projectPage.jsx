@@ -2,8 +2,8 @@
 import Image from "next/image";
 import githubIcon from "../../public/github.png";
 import { useState } from "react";
+import ezzyShop from "@/assets/Images/EzzyShop.png";
 import Chattify from "@/assets/Images/chattify.png";
-import EzzyShop from "@/assets/Images/EzzyShop.png";
 
 function ProjectPage() {
   const [activeProject, setActiveProject] = useState(1);
@@ -31,7 +31,7 @@ function ProjectPage() {
         "Next.js, CSS3, TypeScript, TailwindCSS, SCSS, Firebase, FireStore",
       githubLink: "https://github.com/Harshjs-Gupta/EzzyShop",
       liveLink: "https://ezzy-shop-ten.vercel.app/",
-      image: EzzyShop,
+      image: ezzyShop,
       altText: "EzzyShop",
     },
   ];
@@ -88,7 +88,7 @@ function ProjectPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Image src={project.video} height={400} width={500} />
+                  <Image src={project.image} height={400} width={500} />
                 </a>
               </div>
             )

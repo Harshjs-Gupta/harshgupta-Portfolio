@@ -1,0 +1,750 @@
+/* rgb(5,253,157) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  width: 100%;
+  height: 100dvh;
+  font-family: monospace;
+  position: relative;
+  background-color: rgb(29, 28, 34);
+  overflow-x: hidden;
+}
+
+.nav_bar {
+  height: 4rem;
+  gap: 30px;
+  position: fixed;
+  z-index: 1;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(29, 28, 34, 0.8);
+}
+.nav_bar .portfolio {
+  font-size: 30px;
+  font-weight: 900;
+  color: rgb(5, 253, 157);
+}
+.nav_bar div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+.nav_bar div a {
+  font-size: 20px;
+  font-weight: 600;
+}
+.nav_bar div a:hover {
+  text-decoration: underline;
+  color: rgb(5, 253, 157);
+  text-shadow: 0px 0px 30px rgb(5, 253, 157);
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  height: 550px;
+}
+section .profile-container {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  position: relative;
+  top: 4rem;
+}
+section .profile-container .introduction-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 40px 40px 40px;
+}
+section .profile-container .introduction-container .introduction {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+section .profile-container .introduction-container .introduction .hello {
+  font-size: 20px;
+}
+section .profile-container .introduction-container .introduction h1 {
+  font-size: 30px;
+  color: rgb(5, 253, 157);
+}
+section .profile-container .introduction-container .introduction .profession {
+  display: flex;
+}
+section .profile-container .introduction-container .introduction .profession .static-txt {
+  font-size: 25px;
+}
+section .profile-container .introduction-container .introduction .profession .dynamic-txt {
+  height: 50px;
+  overflow: hidden;
+}
+section .profile-container .introduction-container .introduction .profession span {
+  color: rgb(5, 253, 157);
+  font-size: 25px;
+  margin-left: 10px;
+}
+section .profile-container .introduction-container .introduction .profession dynamic-text,
+section .profile-container .introduction-container .introduction .profession li {
+  color: rgb(5, 253, 157);
+  position: relative;
+  list-style-type: none;
+  height: 50px;
+  position: relative;
+  top: 0;
+  animation: slide 4s steps(2) infinite;
+}
+@keyframes slide {
+  100% {
+    top: -100px;
+  }
+}
+section .profile-container .introduction-container .introduction .profession .Typing::after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  height: 80%;
+  width: 100%;
+  background: rgb(29, 28, 34);
+  border-left: 2px solid rgb(5, 253, 157);
+  animation: typing 2s steps(12) infinite;
+}
+@keyframes typing {
+  100% {
+    left: 100%;
+    margin: 0px -35px 0px 35px;
+  }
+}
+section .profile-container .introduction-container .introduction p {
+  width: 700px;
+  font-size: 20px;
+}
+section .profile-container .introduction-container .social-account {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+section .profile-container .introduction-container .social-account a {
+  height: 50px;
+  width: 50px;
+  border: 1px solid rgb(5, 253, 157);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+section .profile-container .introduction-container .social-account a .logo {
+  height: 50px;
+  width: 50px;
+}
+section .profile-container .introduction-container .social-account a:hover {
+  box-shadow: 0px 0px 30px rgb(5, 253, 157);
+}
+section .profile-container .introduction-container .social-account img {
+  height: 30px;
+  width: 30px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  color: rgb(5, 253, 157);
+}
+section .profile-container .introduction-container .download_btn {
+  height: 50px;
+  width: 190px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+  border: 2px solid rgb(5, 253, 157);
+  border-radius: 25px;
+  cursor: pointer;
+}
+section .profile-container .introduction-container .download_btn:hover {
+  background: rgba(5, 253, 157, 0.2);
+}
+section .profile-container .introduction-container .download_btn a {
+  font-size: 18px;
+  color: rgb(5, 253, 157);
+}
+section .profile-container .introduction-container .download_btn img {
+  height: 30px;
+}
+section .profile-container .picture-container {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 100%;
+}
+section .profile-container .picture-container:hover {
+  box-shadow: 0px 0px 30px rgb(5, 253, 157);
+}
+section .profile-container .picture-container .border {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 5px dashed rgb(5, 253, 157);
+  border-radius: 50%;
+  animation: rotateBorder 20s linear infinite;
+}
+@keyframes rotateBorder {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+section .profile-container .picture-container .picture {
+  width: 98%;
+  height: 98%;
+  border-radius: 50%;
+  overflow: hidden; /* Ensures image stays within the circle shape */
+  position: relative;
+  bottom: 10px;
+  z-index: 1;
+}
+
+/* Section-1 */
+.service-container {
+  height: 100vh;
+  width: 100%;
+  border-top: 1px solid white;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.service-container .service {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+}
+.service-container .service div {
+  font-size: 30px;
+  font-weight: 500;
+}
+.service-container .service pre {
+  font-size: 30px;
+  font-weight: 800;
+  color: rgb(5, 253, 157);
+}
+.service-container .services {
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 450px 450px;
+  grid-template-rows: 210px 210px;
+  gap: 20px;
+  -moz-column-gap: 40px;
+       column-gap: 40px;
+  place-content: center;
+}
+.service-container .services .container {
+  border-bottom: 1px solid gray;
+}
+.service-container .services .container:hover {
+  cursor: pointer;
+}
+.service-container .services .container:hover span {
+  color: rgb(5, 253, 157);
+}
+.service-container .services .container:hover pre {
+  color: rgb(5, 253, 157);
+}
+.service-container .services .container span {
+  font-family: cursive;
+  font-size: 40px;
+}
+.service-container .services .container pre {
+  font-family: monospace;
+  font-size: 30px;
+  font-weight: 700;
+  margin-top: 20px;
+}
+.service-container .services .container p {
+  width: 100%;
+  font-size: 14px;
+  padding: 5px 5px 5px 0;
+  margin-top: 10px;
+}
+
+.aboutme-container {
+  height: 100vh;
+  width: 100%;
+  border-top: 1px solid white;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 70px;
+}
+.aboutme-container .hire-container {
+  height: 400px;
+  width: 300px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.aboutme-container .hire-container span {
+  font-size: 40px;
+  font-family: monospace;
+  font-weight: 600;
+}
+.aboutme-container .hire-container p {
+  font-size: 15px;
+}
+.aboutme-container .hire-container .buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.aboutme-container .hire-container .buttons .active {
+  background: rgb(5, 253, 157);
+}
+.aboutme-container .hire-container .buttons button {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(39, 37, 52);
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+}
+.aboutme-container .hire-container .buttons button:hover {
+  box-shadow: 0px 0px 30px rgb(5, 253, 157);
+  cursor: pointer;
+}
+.aboutme-container .hire-container .buttons .downloadCV {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(39, 37, 52);
+  border-radius: 10px;
+  font-weight: 600;
+  border: none;
+}
+.aboutme-container .hire-container .buttons .downloadCV:hover {
+  box-shadow: 0px 0px 30px rgb(5, 253, 157);
+  cursor: pointer;
+}
+.aboutme-container .about .hidden {
+  display: none;
+}
+.aboutme-container .about .education-container {
+  height: 400px;
+  width: 550px;
+  padding: 10px;
+}
+.aboutme-container .about .education-container .title {
+  font-size: 30px;
+  font-weight: 600;
+  font-family: monospace;
+}
+.aboutme-container .about .education-container .description {
+  color: gray;
+  font-size: 13px;
+  margin-top: 20px;
+}
+.aboutme-container .about .education-container .courses-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 260px 260px;
+  grid-template-rows: 120px 120px;
+  gap: 30px;
+  margin-top: 30px;
+}
+.aboutme-container .about .education-container .courses-container .course {
+  background-color: rgb(39, 37, 52);
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.aboutme-container .about .education-container .courses-container .course .year-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.aboutme-container .about .education-container .courses-container .course .year-container .year {
+  color: rgb(5, 253, 157);
+}
+.aboutme-container .about .education-container .courses-container .course .course-method {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.aboutme-container .about .education-container .courses-container .course .course-method .dot {
+  font-size: 20px;
+  color: rgb(5, 253, 157);
+}
+.aboutme-container .about .education-container .courses-container .course .course-method .method {
+  font-size: 13px;
+  gap: 10px;
+}
+.aboutme-container .about .skill-container {
+  height: 400px;
+  width: 550px;
+  padding: 10px;
+}
+.aboutme-container .about .skill-container .active {
+  background: rgb(5, 253, 157);
+}
+.aboutme-container .about .skill-container .title {
+  font-size: 30px;
+  font-weight: 600;
+  font-family: monospace;
+}
+.aboutme-container .about .skill-container .description {
+  width: 400px;
+  color: gray;
+  font-size: 13px;
+  margin-top: 20px;
+}
+.aboutme-container .about .skill-container .skills {
+  display: grid;
+  grid-template-columns: 120px 120px 120px 120px;
+  grid-template-rows: 140px 140px 140px 140px;
+  gap: 15px;
+}
+.aboutme-container .about .skill-container .skills .logo-container {
+  background-color: rgb(39, 37, 52);
+  margin-top: 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.aboutme-container .about .skill-container .skills .logo-container img {
+  height: 60px;
+  width: 60px;
+}
+.aboutme-container .about .about-container {
+  height: 400px;
+  width: 550px;
+  padding: 10px;
+}
+.aboutme-container .about .about-container .title {
+  font-size: 30px;
+  font-weight: 600;
+  font-family: monospace;
+}
+.aboutme-container .about .about-container .description {
+  width: 400px;
+  color: gray;
+  font-size: 13px;
+  margin-top: 20px;
+}
+.aboutme-container .about .about-container .detail-container {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 200px 200px;
+  grid-template-rows: 50px 50px 50px;
+  gap: 20px;
+}
+.aboutme-container .about .about-container .detail-container .detail {
+  display: flex;
+  gap: 20px;
+}
+.aboutme-container .about .about-container .detail-container .detail .detail-name {
+  color: gray;
+}
+
+#Project-page {
+  height: 100vh;
+  width: 100%;
+  border-top: 1px solid white;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+#Project-page .project-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+  top: 4rem;
+}
+#Project-page .project-selector span {
+  height: 40px;
+  width: 40px;
+  border: 1px solid rgb(5, 253, 157);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  border-radius: 50%;
+}
+#Project-page .project-selector span:hover {
+  color: rgb(5, 253, 157);
+  cursor: pointer;
+  box-shadow: 0px 0px 30px rgb(5, 253, 157);
+}
+#Project-page .project-selector span.active {
+  background: rgba(5, 253, 158, 0.416);
+}
+#Project-page .project-container,
+#Project-page .project-container2 {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding: 10px;
+}
+#Project-page .project-container.hidden,
+#Project-page .project-container2.hidden {
+  display: none;
+}
+#Project-page .project-container .project-detail,
+#Project-page .project-container2 .project-detail {
+  width: 400px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+#Project-page .project-container .project-detail div,
+#Project-page .project-container2 .project-detail div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#Project-page .project-container .project-detail div .project-number,
+#Project-page .project-container2 .project-detail div .project-number {
+  font-size: 40px;
+}
+#Project-page .project-container .project-detail div .project-name,
+#Project-page .project-container2 .project-detail div .project-name {
+  font-size: 25px;
+  font-weight: 800;
+}
+#Project-page .project-container .project-detail .project-function,
+#Project-page .project-container2 .project-detail .project-function {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 0 20px 0;
+  border-bottom: 1px solid gray;
+}
+#Project-page .project-container .project-detail .project-function p,
+#Project-page .project-container2 .project-detail .project-function p {
+  font-size: 13px;
+  color: gray;
+  margin-top: 20px;
+}
+#Project-page .project-container .project-detail .project-function .language-used,
+#Project-page .project-container2 .project-detail .project-function .language-used {
+  color: rgb(5, 253, 157);
+}
+#Project-page .project-container .project-detail .github-link,
+#Project-page .project-container2 .project-detail .github-link {
+  width: 50px;
+  height: 50px;
+  background: rgba(98, 97, 97, 0.829);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+}
+#Project-page .project-container .project-detail .github-link .link,
+#Project-page .project-container2 .project-detail .github-link .link {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+#Project-page .project-container a,
+#Project-page .project-container2 a {
+  cursor: pointer;
+}
+#Project-page .project-container a img,
+#Project-page .project-container2 a img {
+  width: 500px;
+  height: 300px;
+}
+
+/* Section - 5 */
+#Contact-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  border-top: 1px solid gray;
+}
+#Contact-page .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding: 10px;
+}
+#Contact-page .container .contact-container {
+  height: 500px;
+  width: 400px;
+  background: rgba(103, 101, 101, 0.21);
+  padding: 10px;
+  border-radius: 10px;
+}
+#Contact-page .container .contact-container span {
+  font-size: 25px;
+  font-weight: 700;
+  color: rgb(5, 253, 157);
+}
+#Contact-page .container .contact-container .information-container {
+  gap: 20px;
+  margin-top: 20px;
+}
+#Contact-page .container .contact-container .information-container input {
+  background-color: rgb(29, 28, 34);
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  outline: none;
+}
+#Contact-page .container .contact-container .information-container input::-moz-placeholder {
+  font-weight: 500;
+}
+#Contact-page .container .contact-container .information-container input::placeholder {
+  font-weight: 500;
+}
+#Contact-page .container .contact-container .information-container input:focus {
+  border: 1px solid rgb(5, 253, 157);
+}
+#Contact-page .container .contact-container input {
+  background-color: rgb(29, 28, 34);
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  outline: none;
+}
+#Contact-page .container .contact-container input::-moz-placeholder {
+  font-weight: 500;
+}
+#Contact-page .container .contact-container input::placeholder {
+  font-weight: 500;
+}
+#Contact-page .container .contact-container input:focus {
+  border: 1px solid rgb(5, 253, 157);
+}
+#Contact-page .container .contact-container .messageBox {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+#Contact-page .container .contact-container .messageBox select {
+  height: 35px;
+  background-color: rgb(29, 28, 34);
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  outline: none;
+  color: gray;
+}
+#Contact-page .container .contact-container .messageBox select::-moz-placeholder {
+  font-weight: 500;
+}
+#Contact-page .container .contact-container .messageBox select::placeholder {
+  font-weight: 500;
+}
+#Contact-page .container .contact-container .messageBox select:focus {
+  border: 1px solid rgb(5, 253, 157);
+}
+#Contact-page .container .contact-container .messageBox select option {
+  color: gray;
+}
+#Contact-page .container .contact-container .messageBox input {
+  height: 200px;
+  background-color: rgb(29, 28, 34);
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  outline: none;
+  margin-top: 10px;
+}
+#Contact-page .container .contact-container .messageBox input::-moz-placeholder {
+  font-weight: 500;
+  position: absolute;
+  top: 10px;
+}
+#Contact-page .container .contact-container .messageBox input::placeholder {
+  font-weight: 500;
+  position: absolute;
+  top: 10px;
+}
+#Contact-page .container .contact-container .messageBox input:focus {
+  border: 1px solid rgb(5, 253, 157);
+}
+#Contact-page .container .contact-container button {
+  width: 100px;
+  height: 40px;
+  background: rgb(4, 212, 132);
+  font-weight: 700;
+  margin-top: 10px;
+  outline: none;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+}
+#Contact-page .container .contact {
+  height: 200px;
+  width: 300px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#Contact-page .container .contact .contact-method {
+  display: flex;
+  gap: 20px;
+}
+#Contact-page .container .contact .contact-method .icon {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  background: rgba(103, 101, 101, 0.21);
+}
+#Contact-page .container .contact .contact-method .icon img {
+  height: 30px;
+  width: 30px;
+}
+#Contact-page .container .contact .contact-method .information-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+#Contact-page .container .contact .contact-method .information-container pre {
+  color: gray;
+  font-weight: 500;
+}/*# sourceMappingURL=home.css.map */
