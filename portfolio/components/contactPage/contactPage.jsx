@@ -52,6 +52,7 @@ function ContactPage() {
         },
         (error) => {
           console.error("Original message failed...", error.text);
+          console.log(error.text);
           toast.error("Failed to send the message.");
         }
       );
