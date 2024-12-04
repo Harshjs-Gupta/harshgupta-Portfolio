@@ -30,7 +30,7 @@ function ProjectPage() {
       languages:
         "Next.js, CSS3, TypeScript, TailwindCSS, SCSS, Firebase, FireStore",
       githubLink: "https://github.com/Harshjs-Gupta/EzzyShop",
-      liveLink: "https://ezzy-shop-ten.vercel.app/",
+      liveLink: "https://ezzy-shop-eight.vercel.app/",
       image: ezzyShop,
       altText: "EzzyShop",
     },
