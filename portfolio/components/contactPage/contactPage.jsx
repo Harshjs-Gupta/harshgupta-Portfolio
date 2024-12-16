@@ -10,52 +10,43 @@ import "@/style/home.css";
 function ContactPage() {
   const form = useRef();
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
 
-    emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
+    try {
+      emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
 
-    const autoReplyData = {
-      user_name: form.current.name.value, // The user's name
-      to_email: form.current.email.value, // The user's email
-    };
+      const autoReplyData = {
+        user_name: form.current.name.value,
+        to_email: form.current.email.value,
+      };
 
-    // Send original email
-    emailjs
-      .sendForm(
+      // Send original email
+      const result = await emailjs.sendForm(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
         form.current,
         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-      )
-      .then(
-        () => {
-          console.log("Original message sent successfully!");
-          // Send auto-reply email
-          emailjs
-            .send(
-              process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-              process.env.NEXT_PUBLIC_AUTO_EMAILJS_TEMPLATE_ID,
-              autoReplyData,
-              process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-            )
-            .then(() => {
-              console.log("Auto-reply sent successfully!");
-              toast.success("Message and auto-reply sent successfully");
-            })
-            .catch((error) => {
-              console.error("Auto-reply failed...", error.text);
-              toast.error("Message sent, but auto-reply failed.");
-            });
-
-          form.current.reset();
-        },
-        (error) => {
-          console.error("Original message failed...", error.text);
-          console.log(error.text);
-          toast.error("Failed to send the message.");
-        }
       );
+
+      console.log("Original message sent successfully:", result);
+
+      // Send auto-reply email
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_AUTO_EMAILJS_TEMPLATE_ID,
+        autoReplyData,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+      );
+
+      console.log("Auto-reply sent successfully!");
+      toast.success("Message and auto-reply sent successfully");
+    } catch (error) {
+      console.error("Email sending failed:", error);
+      toast.error("Failed to send the message. Please try again later.");
+    } finally {
+      form.current.reset();
+    }
   };
 
   return (
