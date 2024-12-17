@@ -28,6 +28,7 @@ body {
 
 .nav_bar {
   height: 4rem;
+  width: 100%;
   gap: 30px;
   position: fixed;
   z-index: 1;
@@ -58,6 +59,23 @@ body {
         text-decoration: underline;
         color: rgb(5, 253, 157);
         text-shadow: 0px 0px 30px rgb(5, 253, 157);
+      }
+    }
+  }
+}
+@media (max-width: 640px) {
+  .nav_bar {
+    width: 100vw;
+    .portfolio {
+      font-size: 15px;
+    }
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      a {
+        font-size: 10px;
       }
     }
   }
@@ -255,6 +273,56 @@ section {
   }
 }
 
+// Start of Selection
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 640px) {
+  section {
+    display: flex;
+    flex-direction: column-reverse;
+    height: 100dvh;
+    .profile-container {
+      @include flex-center;
+      position: relative;
+      top: 0;
+      flex-direction: column-reverse;
+      gap: 10px;
+      .introduction-container {
+        // gap: 20px;
+        padding: 0px 30px 30px 30px;
+        .introduction {
+          .hello {
+            font-size: 15px;
+          }
+          h1 {
+            font-size: 20px;
+          }
+          .profession {
+            .static-txt {
+              font-size: 18px;
+            }
+            .dynamic-txt {
+              height: 25px;
+
+              span {
+                font-size: 18px;
+              }
+            }
+          }
+          p {
+            font-size: 13px;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
 // Note: Start Section 2 design
 
 /* Section-1 */
@@ -332,7 +400,34 @@ section {
   }
 }
 
-//
+@media (max-width: 640px) {
+  .service-container {
+    height: 100dvh;
+    .service {
+      div {
+        font-size: 20px;
+      }
+      pre {
+        font-size: 20px;
+      }
+    }
+    .services {
+      display: flex;
+      flex-direction: column;
+      .container {
+        span {
+          font-size: 30px;
+        }
+        pre {
+          font-size: 20px;
+        }
+        p {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
 
 // /* Section-3 */
 
@@ -558,6 +653,71 @@ section {
   }
 }
 
+@media (max-width: 640px) {
+  .aboutme-container {
+    height: 100dvh;
+    flex-direction: column;
+
+    .about {
+      .education-container {
+        height: 80%;
+        width: 100vw;
+        .courses-container {
+          grid-template-columns: 180px 180px;
+          grid-template-rows: 80px 80px;
+          .course {
+            gap: 10px;
+            .year-container {
+              .year {
+                font-size: 10px;
+              }
+              .courseName {
+                font-size: 9px;
+              }
+            }
+            .course-method {
+              .dot {
+                font-size: 10px;
+              }
+              .method {
+                font-size: 10px;
+              }
+            }
+          }
+        }
+      }
+      .skill-container {
+        width: 100vw;
+        .skills {
+          grid-template-columns: 90px 90px 90px 90px;
+          grid-template-rows: 90px 90px 90px 90px;
+          .logo-container {
+            img {
+              height: 50px;
+              width: 50px;
+            }
+          }
+        }
+      }
+      .about-container {
+        width: 100vw;
+        padding: 10px;
+        .detail-container {
+          column-gap: 90px;
+          grid-template-columns: 100px 100px;
+          grid-template-rows: 70px 70px 70px;
+
+          .detail {
+            span {
+              font-size: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 // ! Section- 4
 
 #Project-page {
@@ -567,6 +727,7 @@ section {
   padding: 10px;
   display: flex;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
   gap: 50px;
 
@@ -677,6 +838,16 @@ section {
         width: 500px;
         height: 300px;
       }
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  #Project-page {
+    .project-container {
+      width: 100vw;
+      height: 100dvh;
+      flex-direction: column;
     }
   }
 }
@@ -845,6 +1016,14 @@ section {
           }
         }
       }
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  #Contact-page {
+    .container {
+      flex-direction: column;
     }
   }
 }

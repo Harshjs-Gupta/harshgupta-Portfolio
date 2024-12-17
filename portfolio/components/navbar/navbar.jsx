@@ -2,7 +2,7 @@ import "@/style/home.css";
 
 function Navbar() {
   return (
-    <div className="items-center justify-between w-full px-2 nav_bar sm:flex">
+    <div className="justify-between items-center px-2 w-full nav_bar sm:flex">
       <span className="portfolio">Portfolio.</span>
       <div className="option-container">
         <a href="#Home-page" className="nav_links">
